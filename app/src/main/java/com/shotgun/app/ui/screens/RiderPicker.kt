@@ -43,6 +43,8 @@ fun RiderPicker(title: String, prompt: String, players: List<Player>, onPick: (P
                         .padding(horizontal = 18.dp, vertical = 18.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Text(player.avatar, fontSize = 24.sp)
+                    Spacer(Modifier.width(12.dp))
                     Text(
                         player.name,
                         color = Color.White,

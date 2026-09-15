@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.shotgun.app.model.Player
 import com.shotgun.app.state.SessionViewModel
 import com.shotgun.app.ui.theme.CardBg
 import com.shotgun.app.ui.theme.Coral
@@ -48,7 +49,7 @@ fun ScoreboardScreen(session: SessionViewModel, onNextGame: () -> Unit, onNewTri
             modifier = Modifier.weight(1f)
         ) {
             itemsIndexed(ranked) { index, (player, score) ->
-                RankRow(rank = index + 1, name = player.name, score = score, isLeader = index == 0)
+                RankRow(rank = index + 1, player = player, score = score, isLeader = index == 0)
             }
         }
 
@@ -64,7 +65,7 @@ fun ScoreboardScreen(session: SessionViewModel, onNextGame: () -> Unit, onNewTri
 }
 
 @Composable
-private fun RankRow(rank: Int, name: String, score: Int, isLeader: Boolean) {
+private fun RankRow(rank: Int, player: Player, score: Int, isLeader: Boolean) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -80,8 +81,10 @@ private fun RankRow(rank: Int, name: String, score: Int, isLeader: Boolean) {
             color = if (isLeader) Gold else InkSoft,
             modifier = Modifier.width(24.dp)
         )
+        Text(player.avatar, fontSize = 22.sp)
+        Spacer(Modifier.width(8.dp))
         Text(
-            name + if (isLeader) " \u2b50" else "",
+            player.name + if (isLeader) " \u2b50" else "",
             fontWeight = FontWeight.Bold,
             color = if (isLeader) Color.White else Ink,
             modifier = Modifier.weight(1f)

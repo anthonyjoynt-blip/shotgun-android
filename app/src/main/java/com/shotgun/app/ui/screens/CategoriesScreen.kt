@@ -213,8 +213,14 @@ private fun TurnCard(player: Player, millisLeft: Long) {
             .background(Color(player.colorHex))
             .padding(18.dp)
     ) {
-        Text(player.name, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-        Text("name one — go!", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(player.avatar, fontSize = 28.sp)
+            Spacer(Modifier.width(10.dp))
+            Column {
+                Text(player.name, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                Text("name one — go!", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
+            }
+        }
         Spacer(Modifier.height(8.dp))
         Text(
             "%.1f".format(millisLeft / 1000f),
@@ -244,7 +250,7 @@ private fun RiderStrip(alive: List<Player>, out: List<Player>) {
 @Composable
 private fun RiderChip(player: Player, isOut: Boolean) {
     Text(
-        player.name,
+        "${player.avatar} ${player.name}",
         color = if (isOut) InkSoft.copy(alpha = 0.5f) else Color.White,
         fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
@@ -265,7 +271,7 @@ private fun WinnerCard(player: Player) {
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("🏆", fontSize = 40.sp)
+        Text("🏆 ${player.avatar}", fontSize = 40.sp)
         Text(player.name.uppercase(), color = Gold, fontFamily = BebasNeue, fontSize = 40.sp)
         Text("last one standing", color = Color.White.copy(alpha = 0.75f), fontSize = 13.sp)
     }

@@ -1,5 +1,6 @@
 package com.shotgun.app.model
 
+import com.shotgun.app.data.Avatars
 import kotlinx.serialization.Serializable
 import java.util.UUID
 
@@ -20,7 +21,9 @@ enum class GameType {
 data class Player(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
-    val colorHex: Long
+    val colorHex: Long,
+    /** An emoji from Avatars.all. Defaulted so riders saved before avatars still decode. */
+    val avatar: String = Avatars.DEFAULT
 )
 
 data class GameDef(

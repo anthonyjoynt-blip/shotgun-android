@@ -87,6 +87,8 @@ private fun LetterCard(player: Player, found: Int, onFound: () -> Unit, onUndo: 
             .padding(horizontal = 18.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Text(player.avatar, fontSize = 28.sp)
+        Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
             Text(player.name, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
             Text(

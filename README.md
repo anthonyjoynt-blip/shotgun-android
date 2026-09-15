@@ -9,9 +9,13 @@ appends score events, and the scoreboard is always the sum of those events.
   Scores are never stored directly — the scoreboard is always the sum of
   `ScoreEvent`s, so any game just needs to append events.
 - **Game catalog** (`data/GameCatalog.kt`): the six games, declared as data.
-- **Persistence** (`data/TripStore.kt`): players and the score log are saved
-  to Preferences DataStore as JSON after every change, so a trip survives the
-  app being closed. "Start a new trip" on the scoreboard wipes it.
+- **Roster and trip** (`state/SessionViewModel.kt`): the roster is everyone
+  who has ever ridden, each with an emoji avatar (`data/Avatars.kt`); the
+  trip's riders are a subset toggled on the setup screen (tap to ride, hold
+  to forget). "New trip" clears riders and scores but keeps the roster.
+- **Persistence** (`data/TripStore.kt`): roster, riders and the score log are
+  saved to Preferences DataStore as JSON after every change, so closing the
+  app mid-drive loses nothing.
 - **Session state** (`state/SessionViewModel.kt`): players + score log for
   the current trip, shared across screens via Jetpack Navigation.
 - **Screens**: Game Library → Player Setup → *game* → Scoreboard.

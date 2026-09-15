@@ -136,7 +136,7 @@ private fun RiderTabs(riders: List<Player>, selected: Int, onSelect: (Int) -> Un
         riders.forEachIndexed { i, rider ->
             val on = i == selected
             Text(
-                rider.name,
+                "${rider.avatar} ${rider.name}",
                 color = if (on) Color.White else Ink,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 13.sp,
@@ -195,6 +195,7 @@ private fun BingoCard(player: Player, marked: Set<Int>) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("BINGO!", color = Gold, fontFamily = BebasNeue, fontSize = 56.sp)
+        Text(player.avatar, fontSize = 40.sp)
         Text(player.name.uppercase(), color = Color.White, fontFamily = BebasNeue, fontSize = 32.sp)
         Text(
             "${marked.size} squares + $BINGO_BONUS bonus",

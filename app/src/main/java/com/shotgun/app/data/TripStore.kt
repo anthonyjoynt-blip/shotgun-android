@@ -25,25 +25,24 @@ class TripStore(context: Context) {
     private val store = context.applicationContext.tripDataStore
     private val json = Json { ignoreUnknownKeys = true }
 
-    data class Snapshot(val players: List<Player>, val history: List<ScoreEvent>)
+    /** roster = everyone who has ever ridden; players = who's on this trip; history = this trip's score log. */
+    data class Snapshot(val roster: List<Player>, val players: List<Player>, val history: List<ScoreEvent>)
 
     suspend fun load(): Snapshot {
         val prefs = store.data.first()
         return Snapshot(
+            roster = decode(prefs[ROSTER]),
             players = decode(prefs[PLAYERS]),
             history = decode(prefs[HISTORY])
         )
     }
 
-    suspend fun save(players: List<Player>, history: List<ScoreEvent>) {
+    suspend fun save(roster: List<Player>, players: List<Player>, history: List<ScoreEvent>) {
         store.edit { prefs ->
+            prefs[ROSTER] = json.encodeToString(roster)
             prefs[PLAYERS] = json.encodeToString(players)
             prefs[HISTORY] = json.encodeToString(history)
         }
-    }
-
-    suspend fun clear() {
-        store.edit { it.clear() }
     }
 
     /** A blob written by an older model shape loses that trip rather than crashing the app. */
@@ -59,6 +58,7 @@ class TripStore(context: Context) {
     }
 
     private companion object {
+        val ROSTER = stringPreferencesKey("roster")
         val PLAYERS = stringPreferencesKey("players")
         val HISTORY = stringPreferencesKey("history")
     }

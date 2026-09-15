@@ -138,6 +138,8 @@ private fun ColumnScope.GuessPhase(
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Text(rider.avatar, fontSize = 22.sp)
+                Spacer(Modifier.width(8.dp))
                 Text(rider.name, fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.weight(1f))
                 STATEMENTS.forEach { n ->
                     val chosen = guesses[rider.id] == n
@@ -244,6 +246,8 @@ private fun ColumnScope.ResultPhase(
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Text(rider.avatar, fontSize = 22.sp)
+                Spacer(Modifier.width(8.dp))
                 Text(rider.name, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
                 Text("guessed #${guesses[rider.id]}", color = InkSoft, fontSize = 13.sp)
                 Spacer(Modifier.width(10.dp))

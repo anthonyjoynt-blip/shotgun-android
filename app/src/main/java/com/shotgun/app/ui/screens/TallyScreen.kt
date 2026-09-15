@@ -80,6 +80,8 @@ private fun TallyCard(player: Player, count: Int, onTap: () -> Unit, onUndo: () 
             .padding(horizontal = 18.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Text(player.avatar, fontSize = 28.sp)
+        Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
             Text(player.name, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
             Text("tap to add one", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)

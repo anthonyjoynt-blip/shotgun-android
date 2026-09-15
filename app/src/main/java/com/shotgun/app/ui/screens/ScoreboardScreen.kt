@@ -26,9 +26,18 @@ fun ScoreboardScreen(session: SessionViewModel, onNextGame: () -> Unit, onNewTri
     val ranked = session.scoreboard()
 
     Column(Modifier.fillMaxSize().padding(top = 24.dp)) {
-        Column(Modifier.padding(horizontal = 20.dp)) {
-            Text("SHOTGUN", style = MaterialTheme.typography.headlineMedium)
-            Text("Scoreboard \u00b7 this trip", style = MaterialTheme.typography.bodyMedium, color = InkSoft)
+        Row(
+            Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text("SHOTGUN", style = MaterialTheme.typography.headlineMedium)
+                Text("Scoreboard \u00b7 this trip", style = MaterialTheme.typography.bodyMedium, color = InkSoft)
+            }
+            // Wipes the trip, so it lives up here, a whole screen away from NEXT GAME.
+            OutlinedButton(onClick = onNewTrip) {
+                Text("New trip", color = InkSoft, fontSize = 12.sp)
+            }
         }
         Spacer(Modifier.height(14.dp))
         HorizontalDivider(Modifier.padding(horizontal = 20.dp))
@@ -47,16 +56,9 @@ fun ScoreboardScreen(session: SessionViewModel, onNextGame: () -> Unit, onNewTri
             onClick = onNextGame,
             colors = ButtonDefaults.buttonColors(containerColor = Ink),
             // padding before height, or the button's content area shrinks to 20dp
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp).fillMaxWidth().height(52.dp)
+            modifier = Modifier.padding(16.dp).fillMaxWidth().height(52.dp)
         ) {
             Text("NEXT GAME", fontWeight = FontWeight.Bold)
-        }
-        // The trip persists across app restarts, so this is the only way to reset it.
-        TextButton(
-            onClick = onNewTrip,
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
-        ) {
-            Text("Start a new trip", color = InkSoft)
         }
     }
 }

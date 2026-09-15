@@ -8,7 +8,11 @@ import java.util.UUID
  * a GameDef with one of these types (plus a screen that knows how to run
  * that type) rather than writing new scoring plumbing each time.
  */
-enum class GameType { POINTS, TALLY, BINGO, ELIMINATION, GUESS20 }
+enum class GameType {
+    POINTS, TALLY, BINGO, ELIMINATION, GUESS20,
+    /** Each player advances through a fixed ordered list (A→Z); one point per step. */
+    SEQUENCE
+}
 
 // Player and ScoreEvent are what a trip is made of, so they're what gets
 // persisted (see data/TripStore.kt). GameDef is static catalog data, not saved.

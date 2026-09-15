@@ -21,7 +21,7 @@ object GameCatalog {
         GameDef(
             id = "alphabet_hunt",
             name = "Alphabet Hunt",
-            type = GameType.POINTS,
+            type = GameType.SEQUENCE,
             description = "Spot A\u2192Z on signs",
             emoji = "\uD83D\uDD24"
         ),

@@ -20,9 +20,10 @@ appends score events, and the scoreboard is always the sum of those events.
   the current trip, shared across screens via Jetpack Navigation.
 - **Screens**: Game Library → Player Setup → *game* → Scoreboard.
   `NavGraph.kt` dispatches on `GameType`, one screen per type:
-  - **Guess It** (`GUESS20`) — pick a guesser; the car agrees on a secret
-    and answers yes/no; a wrong guess costs a question; guesser scores
-    20 − questions used, or the car scores 5 each if they're stumped.
+  - **Guess It** (`GUESS20`) — 20 Questions, two ways: one rider guesses
+    and the car answers, or one rider keeps the secret and the car guesses
+    together. A wrong guess costs a question; the guessing side scores
+    20 − questions used, the answering side scores 5 per guesser on a stump.
   - **Punch Tally** (`TALLY`) — one card per rider, tap to add one, − to undo.
   - **Alphabet Hunt** (`SEQUENCE`) — each rider hunts A→Z in order; the card
     shows the next letter they need.

@@ -55,7 +55,6 @@ is machine-specific and git-ignored; Android Studio creates it on first open.
 
 ## Next
 
-- Guess It's category is hard-coded to "Animal".
 - Long rounds (Plate Bingo, Alphabet Hunt) lose their in-progress state if
   the app is killed mid-round; Alphabet Hunt survives because its progress
   *is* its score events, Plate Bingo doesn't.

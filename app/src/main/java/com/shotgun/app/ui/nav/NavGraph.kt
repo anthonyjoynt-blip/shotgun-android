@@ -10,6 +10,7 @@ import com.shotgun.app.data.GameCatalog
 import com.shotgun.app.model.GameType
 import com.shotgun.app.state.SessionViewModel
 import com.shotgun.app.ui.screens.AlphabetHuntScreen
+import com.shotgun.app.ui.screens.CategoriesScreen
 import com.shotgun.app.ui.screens.ComingSoonScreen
 import com.shotgun.app.ui.screens.GameLibraryScreen
 import com.shotgun.app.ui.screens.GuessItScreen
@@ -59,6 +60,7 @@ fun ShotgunNavGraph() {
                 GameType.GUESS20 -> GuessItScreen(game = game, session = session, onFinished = onFinished)
                 GameType.TALLY -> TallyScreen(game = game, session = session, onFinished = onFinished)
                 GameType.SEQUENCE -> AlphabetHuntScreen(game = game, session = session, onFinished = onFinished)
+                GameType.ELIMINATION -> CategoriesScreen(game = game, session = session, onFinished = onFinished)
                 else -> ComingSoonScreen(
                     game = game,
                     onBack = { navController.popBackStack(Routes.LIBRARY, inclusive = false) }

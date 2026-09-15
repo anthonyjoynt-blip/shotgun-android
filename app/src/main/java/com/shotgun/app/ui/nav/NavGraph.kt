@@ -17,6 +17,7 @@ import com.shotgun.app.ui.screens.GuessItScreen
 import com.shotgun.app.ui.screens.PlayerSetupScreen
 import com.shotgun.app.ui.screens.ScoreboardScreen
 import com.shotgun.app.ui.screens.TallyScreen
+import com.shotgun.app.ui.screens.TwoTruthsScreen
 
 private object Routes {
     const val LIBRARY = "library"
@@ -61,6 +62,7 @@ fun ShotgunNavGraph() {
                 GameType.TALLY -> TallyScreen(game = game, session = session, onFinished = onFinished)
                 GameType.SEQUENCE -> AlphabetHuntScreen(game = game, session = session, onFinished = onFinished)
                 GameType.ELIMINATION -> CategoriesScreen(game = game, session = session, onFinished = onFinished)
+                GameType.POINTS -> TwoTruthsScreen(game = game, session = session, onFinished = onFinished)
                 else -> ComingSoonScreen(
                     game = game,
                     onBack = { navController.popBackStack(Routes.LIBRARY, inclusive = false) }
